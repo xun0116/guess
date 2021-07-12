@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <hr>
+        <h1>Created by UrFatharrrr</h1>
+        <h1>Guess Number Between 1-100</h1>
+        Guess : <input type="number" name = "number" id = "random" min="1" max="100">
+        <button onclick = "check()">Guess</button>
+        <hr>
+        Your Guess:
+        <hr>
+        <div id= "msg"></div>
+        
+    </body>
+    <script>
+        var max = 100;
+        var min = 1;
+        var  count = 0;
+        var answer = parseInt((Math.random())*100+1);
+        document.getElementById("answer").innerHTML = answer;
+        function check()
+        {   
+            count ++;
+            var guess = document.getElementById("random").value;
+            var node = document.createElement("p");
+            var textnode = document.createTextNode("Guess"+ count+": "+guess);
+            node.appendChild(textnode);
+            document.getElementById("msg").appendChild(node);
+            
+
+            if(answer == guess){
+                node = document.createElement("p");
+                textnode = document.createTextNode("BINGO!!")
+                node.appendChild(textnode);
+                document.getElementById("msg").appendChild(node);
+            }else if(answer < guess){
+                max = guess; 
+                node = document.createElement("p");
+                textnode = document.createTextNode("Guess between "+min+" and "+max);
+                node.appendChild(textnode);
+                document.getElementById("msg").appendChild(node);
+            }else if(answer > guess){
+                min = guess; 
+                node = document.createElement("p");
+                textnode = document.createTextNode("Guess between "+min+" and "+max);
+                node.appendChild(textnode);
+                document.getElementById("msg").appendChild(node);
+            }
+        }
+    </script>
+</html>
